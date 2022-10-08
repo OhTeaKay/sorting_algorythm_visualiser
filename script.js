@@ -4,6 +4,11 @@ const array=[];
 init();
 
 let audioCtx=null;
+let audioOn = false;
+
+function sound(){
+    audioOn = !audioOn;
+}
 
 function playNote(freq){
     if(audioCtx==null){
@@ -52,8 +57,10 @@ function animate(moves){
         [array[i],array[j]]=[array[j],array[i]];
     }
 
+    if(audioOn){
     playNote(200+array[i]*500);
     playNote(200+array[j]*500);
+    }
 
     showBars(move);
     setTimeout(function(){
